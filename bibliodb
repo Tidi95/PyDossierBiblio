@@ -1,0 +1,30 @@
+#!/usr/bin/env python3
+from biblio import commandes
+from biblio import bibliotheque
+from biblio import livre
+def main():
+	bibli = bibliotheque.Bibliotheque()
+	while True:
+		entrée = input("\033[34m\n\nComment pourrais-je vous aider(entrez {M} pour voir le menu) ? \n\n\033[0m").upper()
+		if entrée == "Q":
+			print("Au revoir 👋")
+			return False
+		elif entrée == "M":
+			commandes.affiche_menu()
+		elif entrée == "LG":
+			commandes.liste_genre(bibli)
+		elif entrée == "LL":
+			commandes.liste_livre(bibli)
+		elif entrée == "NG":
+			commandes.nouveau_genre(bibli)
+		elif entrée == "NL":
+			livr = livre.Livre()
+			commandes.nouveau_livre(bibli,livr)
+		elif entrée == "SG":
+			commandes.sup_genre(bibli)
+		elif entrée == "SL":
+			commandes.sup_livre(bibli)
+		else:
+			print("je n'ai pas compris votre reponse ")
+
+main()
