@@ -1,4 +1,3 @@
-#Mail prof : rogers@lipn.univ-paris13.fr
 #Commandes.py
 
 def affiche_menu():
