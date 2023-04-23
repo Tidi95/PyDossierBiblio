@@ -1,9 +1,13 @@
 #!/usr/bin/python3
+#bibliodb
 from biblio import commandes
 from biblio import bibliotheque
-from biblio import livre
+from biblio.livre import Livre
+import json as package_json
 def main():
 	bibli = bibliotheque.Bibliotheque()
+	fichier_json=".biblio.json"
+	commandes.recharge(fichier_json,bibli,Livre,package_json)
 	while True:
 		entrée = input("\033[34m\n\nComment pourrais-je vous aider(entrez {M} pour voir le menu) ? \n\n\033[0m").upper()
 		if entrée == "Q":
@@ -14,16 +18,15 @@ def main():
 		elif entrée == "LG":
 			commandes.liste_genre(bibli)
 		elif entrée == "LL":
-			commandes.liste_livre(bibli)
+			commandes.liste_livre(bibli,Livre,package_json)
 		elif entrée == "NG":
 			commandes.nouveau_genre(bibli)
 		elif entrée == "NL":
-			livr = livre.Livre()
-			commandes.nouveau_livre(bibli,livr)
+			commandes.nouveau_livre(bibli,Livre(),package_json)
 		elif entrée == "SG":
-			commandes.sup_genre(bibli)
+			commandes.sup_genre(bibli,package_json)
 		elif entrée == "SL":
-			commandes.sup_livre(bibli)
+			commandes.sup_livre(bibli,package_json)
 		else:
 			print("je n'ai pas compris votre reponse ")
 
